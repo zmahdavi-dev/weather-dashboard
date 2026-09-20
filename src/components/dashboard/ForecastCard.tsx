@@ -1,36 +1,18 @@
-import {
-  CloudOutlined,
-  WbSunnyOutlined,
-  WaterDropOutlined,
-} from "@mui/icons-material";
+import { Box, Card, CardContent, Divider, Stack, Typography } from "@mui/material";
 
-import { Card, CardContent, Divider, Stack, Typography } from "@mui/material";
+type ForecastItem = {
+  date: string;
+  condition: string;
+  maxTemp: number;
+  minTemp: number;
+  icon: string;
+};
 
-const forecastItems = [
-  {
-    day: "امروز",
-    condition: "آفتابی",
-    min: "۱۸°",
-    max: "۲۸°",
-    icon: <WbSunnyOutlined />,
-  },
-  {
-    day: "فردا",
-    condition: "نیمه ابری",
-    min: "۱۷°",
-    max: "۲۵°",
-    icon: <CloudOutlined />,
-  },
-  {
-    day: "دوشنبه",
-    condition: "بارانی",
-    min: "۱۵°",
-    max: "۲۲°",
-    icon: <WaterDropOutlined />,
-  },
-];
+type ForecastCardProps = {
+  items: ForecastItem[];
+};
 
-export default function ForecastCard() {
+export default function ForecastCard({ items }: ForecastCardProps) {
   return (
     <Card
       sx={{
@@ -42,80 +24,78 @@ export default function ForecastCard() {
     >
       <CardContent
         sx={{
-          p: 2.5,
+          p: 2,
+
+          "&:last-child": {
+            pb: 2,
+          },
         }}
       >
         <Typography
           sx={{
-            fontSize: 16,
+            fontSize: 14,
             fontWeight: 600,
-            mb: 2,
+            mb: 1.5,
           }}
         >
-          پیش‌بینی ۳ روز آینده
+          پیش‌بینی روزهای آینده
         </Typography>
 
-        <Stack>
-          {forecastItems.map((item, index) => (
-            <Stack key={item.day}>
+        <Stack spacing={1.5}>
+          {items.map((item, index) => (
+            <Box key={item.date}>
               <Stack
                 direction="row"
                 sx={{
                   alignItems: "center",
                   justifyContent: "space-between",
-                  py: 1.5,
                 }}
               >
-                <Stack
-                  direction="row"
-                  spacing={1.25}
-                  sx={{
-                    alignItems: "center",
-                  }}
-                >
+                <Box>
                   <Typography
                     sx={{
-                      color: "primary.main",
-                      display: "flex",
-                      alignItems: "center",
+                      fontSize: 12,
+                      fontWeight: 500,
                     }}
                   >
-                    {item.icon}
+                    {item.date}
                   </Typography>
 
-                  <Stack>
-                    <Typography
-                      sx={{
-                        fontSize: 13,
-                        fontWeight: 500,
-                      }}
-                    >
-                      {item.day}
-                    </Typography>
+                  <Typography
+                    sx={{
+                      fontSize: 10,
+                      color: "text.secondary",
+                      mt: 0.25,
+                    }}
+                  >
+                    {item.condition}
+                  </Typography>
+                </Box>
 
-                    <Typography
-                      sx={{
-                        fontSize: 11,
-                        color: "text.secondary",
-                      }}
-                    >
-                      {item.condition}
-                    </Typography>
-                  </Stack>
-                </Stack>
+                <Box
+                  component="img"
+                  src={item.icon}
+                  alt={item.condition}
+                  sx={{
+                    width: 34,
+                    height: 34,
+                  }}
+                />
 
                 <Typography
                   sx={{
-                    fontSize: 13,
-                    fontWeight: 500,
+                    fontSize: 12,
+                    fontWeight: 600,
                   }}
                 >
-                  {item.max} / {item.min}
+                  {Math.round(item.maxTemp)}° / {Math.round(item.minTemp)}°
                 </Typography>
               </Stack>
 
-              {index < forecastItems.length - 1 && <Divider />}
-            </Stack>
+              {index < items.length - 1 && (
+                <Divider sx={{ mt: 1.5 }} />
+              )}
+            </Box>
           ))}
         </Stack>
       </CardContent>

@@ -1,155 +1,107 @@
-import {
-  CloudOutlined,
-  LocationOnOutlined,
-  WbSunnyOutlined,
-} from "@mui/icons-material";
-
-import {
-  Box,
-  Card,
-  CardContent,
-  Stack,
-  Typography,
-} from "@mui/material";
+import { Box, Card, CardContent, Typography } from "@mui/material";
 
 import tehranImage from "../../assets/tehran.jpg";
 
-export default function CurrentWeatherCard() {
+type CurrentWeatherCardProps = {
+  city: string;
+  country: string;
+  temperature: number;
+  feelsLike: number;
+  condition: string;
+  localtime: string;
+};
+
+export default function CurrentWeatherCard({
+  city,
+  country,
+  temperature,
+  feelsLike,
+  condition,
+  localtime,
+}: CurrentWeatherCardProps) {
   return (
     <Card
       sx={{
         height: 260,
         overflow: "hidden",
         position: "relative",
+        color: "#fff",
         backgroundImage: `
           linear-gradient(
             90deg,
-            rgba(20, 24, 70, 0.52),
-            rgba(20, 24, 70, 0.12)
+            rgba(20, 24, 70, 0.6),
+            rgba(20, 24, 70, 0.15)
           ),
           url(${tehranImage})
         `,
         backgroundSize: "cover",
         backgroundPosition: "center",
-        color: "#fff",
       }}
     >
       <CardContent
         sx={{
-          position: "relative",
-          zIndex: 1,
           height: "100%",
-          p: 3,
+          p: 2.5,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+
+          "&:last-child": {
+            pb: 2.5,
+          },
         }}
       >
-        <Stack
-          direction="row"
-          sx={{
-            justifyContent: "space-between",
-            alignItems: "flex-start",
-          }}
-        >
-          <Box>
-            <Stack
-              direction="row"
-              spacing={1}
-              sx={{
-                alignItems: "center",
-              }}
-            >
-              <WbSunnyOutlined
-                sx={{
-                  fontSize: 44,
-                  color: "#FFE47A",
-                }}
-              />
-
-              <Typography
-                sx={{
-                  fontSize: 44,
-                  fontWeight: 500,
-                  lineHeight: 1,
-                  color: "#fff",
-                }}
-              >
-                ۲۶°
-              </Typography>
-            </Stack>
-
-            <Typography
-              sx={{
-                mt: 1.25,
-                fontSize: 14,
-                fontWeight: 500,
-                color: "rgba(255,255,255,0.95)",
-              }}
-            >
-              نیمه ابری
-            </Typography>
-
-            <Typography
-              sx={{
-                mt: 0.5,
-                fontSize: 12,
-                color: "rgba(255,255,255,0.78)",
-              }}
-            >
-              احساس واقعی ۲۸°
-            </Typography>
-          </Box>
-
-          <Box
+        <Box>
+          <Typography
             sx={{
-              textAlign: "left",
+              fontSize: 14,
+              fontWeight: 500,
             }}
           >
-            <Typography
-              sx={{
-                fontSize: 12,
-                fontWeight: 500,
-                color: "#fff",
-              }}
-            >
-              دوشنبه، ۷:۴۳ صبح
-            </Typography>
+            {city}، {country}
+          </Typography>
 
-            <Stack
-              direction="row"
-              spacing={0.5}
-              sx={{
-                mt: 1,
-                alignItems: "center",
-                justifyContent: "flex-end",
-              }}
-            >
-              <LocationOnOutlined
-                sx={{
-                  fontSize: 15,
-                  color: "rgba(255,255,255,0.82)",
-                }}
-              />
+          <Typography
+            sx={{
+              fontSize: 11,
+              mt: 0.5,
+              opacity: 0.85,
+            }}
+          >
+            {localtime}
+          </Typography>
+        </Box>
 
-              <Typography
-                sx={{
-                  fontSize: 12,
-                  color: "rgba(255,255,255,0.82)",
-                }}
-              >
-                تهران، ایران
-              </Typography>
-            </Stack>
-          </Box>
-        </Stack>
+        <Box>
+          <Typography
+            sx={{
+              fontSize: 44,
+              lineHeight: 1,
+              fontWeight: 600,
+            }}
+          >
+            {Math.round(temperature)}°
+          </Typography>
 
-        <CloudOutlined
-          sx={{
-            position: "absolute",
-            left: 24,
-            bottom: 18,
-            fontSize: 88,
-            color: "rgba(255,255,255,0.18)",
-          }}
-        />
+          <Typography
+            sx={{
+              fontSize: 13,
+              mt: 1,
+            }}
+          >
+            {condition}
+          </Typography>
+
+          <Typography
+            sx={{
+              fontSize: 11,
+              mt: 0.5,
+              opacity: 0.85,
+            }}
+          >
+            دمای محسوس {Math.round(feelsLike)}°
+          </Typography>
+        </Box>
       </CardContent>
     </Card>
   );

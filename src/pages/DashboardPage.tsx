@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 import {
   AirOutlined,
   OpacityOutlined,
@@ -5,7 +7,7 @@ import {
   WbSunnyOutlined,
 } from "@mui/icons-material";
 
-import { Box, Grid, Typography } from "@mui/material";
+import { Alert, Box, CircularProgress, Grid, Typography } from "@mui/material";
 
 import AddCityCard from "../components/dashboard/AddCityCard";
 import CurrentWeatherCard from "../components/dashboard/CurrentWeatherCard";
@@ -14,13 +16,57 @@ import HighlightCard from "../components/dashboard/HighlightCard";
 import RainChanceCard from "../components/dashboard/RainChanceCard";
 import TemperatureChart from "../components/dashboard/TemperatureChart";
 
+import {
+  fetchCurrentWeather,
+  fetchWeatherForecast,
+} from "../features/weather/weatherSlice";
+
+import { useAppDispatch, useAppSelector } from "../store/hooks";
+
 export default function DashboardPage() {
+  const dispatch = useAppDispatch();
+
+  const { current, forecast, loading, error } = useAppSelector(
+    (state) => state.weather,
+  );
+
+  useEffect(() => {
+    dispatch(fetchCurrentWeather("Tehran"));
+    dispatch(fetchWeatherForecast("Tehran"));
+  }, [dispatch]);
+
+  if (loading && !current) {
+    return (
+      <Box
+        sx={{
+          minHeight: 300,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <CircularProgress />
+      </Box>
+    );
+  }
+
+  if (error) {
+    return <Alert severity="error">{error}</Alert>;
+  }
+
   return (
     <Box>
       {/* ردیف اول */}
       <Grid container spacing={2}>
         <Grid size={{ xs: 12, md: 5 }}>
-          <CurrentWeatherCard />
+          <CurrentWeatherCard
+            city={current?.location.name ?? "Tehran"}
+            country={current?.location.country ?? ""}
+            temperature={current?.current.temp_c ?? 0}
+            feelsLike={current?.current.feelslike_c ?? 0}
+            condition={current?.current.condition.text ?? ""}
+            localtime={current?.location.localtime ?? ""}
+          />
         </Grid>
 
         <Grid size={{ xs: 12, md: 2 }}>
@@ -48,8 +94,8 @@ export default function DashboardPage() {
           <Grid size={{ xs: 12, sm: 6, md: 3 }}>
             <HighlightCard
               title="رطوبت"
-              value="۶۵٪"
-              description="وضعیت نرمال"
+              value={`${current?.current.humidity ?? 0}٪`}
+              description="رطوبت فعلی"
               icon={<OpacityOutlined />}
             />
           </Grid>
@@ -57,8 +103,8 @@ export default function DashboardPage() {
           <Grid size={{ xs: 12, sm: 6, md: 3 }}>
             <HighlightCard
               title="سرعت باد"
-              value="۱۲ km/h"
-              description="باد ملایم"
+              value={`${current?.current.wind_kph ?? 0} km/h`}
+              description="سرعت باد"
               icon={<AirOutlined />}
             />
           </Grid>
@@ -66,17 +112,17 @@ export default function DashboardPage() {
           <Grid size={{ xs: 12, sm: 6, md: 3 }}>
             <HighlightCard
               title="میزان بارش"
-              value="۲.۴ mm"
-              description="بارش کم"
+              value={`${current?.current.precip_mm ?? 0} mm`}
+              description="بارش فعلی"
               icon={<WaterDropOutlined />}
             />
           </Grid>
 
           <Grid size={{ xs: 12, sm: 6, md: 3 }}>
             <HighlightCard
-              title="طلوع خورشید"
-              value="۶:۰۳"
-              description="غروب ۱۸:۲۱"
+              title="دمای محسوس"
+              value={`${current?.current.feelslike_c ?? 0}°`}
+              description="احساس واقعی دما"
               icon={<WbSunnyOutlined />}
             />
           </Grid>
@@ -91,7 +137,17 @@ export default function DashboardPage() {
           </Grid>
 
           <Grid size={{ xs: 12, md: 4 }}>
-            <ForecastCard />
+            <ForecastCard
+              items={
+                forecast?.forecast.forecastday.map((day) => ({
+                  date: day.date,
+                  condition: day.day.condition.text,
+                  maxTemp: day.day.maxtemp_c,
+                  minTemp: day.day.mintemp_c,
+                  icon: `https:${day.day.condition.icon}`,
+                })) ?? []
+              }
+            />
           </Grid>
         </Grid>
       </Box>
