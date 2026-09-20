@@ -19,7 +19,6 @@ export default function DashboardLayout() {
         sx={{
           flexGrow: 1,
           minWidth: 0,
-          minHeight: "100vh",
         }}
       >
         <Header />

@@ -18,7 +18,7 @@ export default function Header() {
     <Box
       component="header"
       sx={{
-        height: 58,
+        height: 80,
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
@@ -33,13 +33,13 @@ export default function Header() {
         size="small"
         placeholder="جستجوی شهر..."
         sx={{
-          width: 230,
+          width: 300,
 
           "& .MuiOutlinedInput-root": {
-            height: 34,
-            borderRadius: 2,
+            height: 40,
+            borderRadius: 1,
             bgcolor: "background.default",
-            fontSize: 12,
+            fontSize: 14,
 
             "& fieldset": {
               borderColor: "transparent",
