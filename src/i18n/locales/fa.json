@@ -1,0 +1,50 @@
+{
+  "dashboard": {
+    "todayStatus": "وضعیت امروز",
+    "humidity": "رطوبت",
+    "windSpeed": "سرعت باد",
+    "precipitation": "میزان بارش",
+    "feelsLike": "دمای محسوس",
+    "currentHumidity": "رطوبت فعلی",
+    "currentWind": "سرعت باد",
+    "currentPrecipitation": "بارش فعلی",
+    "realFeel": "احساس واقعی دما",
+    "forecast": "پیش‌بینی روزهای آینده"
+  },
+  "sidebar": {
+    "appName": "هواشناسی",
+    "home": "خانه",
+    "forecast": "پیش‌بینی",
+    "cities": "موقعیت‌ها",
+    "analytics": "تحلیل‌ها",
+    "calendar": "تقویم",
+    "settings": "تنظیمات"
+  },
+  "header": {
+  "searchPlaceholder": "جستجوی شهر..."
+},
+"locations": {
+  "Tehran": "تهران",
+  "Iran": "ایران"
+},
+"units": {
+  "kmh": "کیلومتر/ساعت",
+  "mm": "میلی‌متر"
+},
+"weatherConditions": {
+  "Sunny": "آفتابی",
+  "Clear": "صاف",
+  "Partly cloudy": "نیمه‌ابری",
+  "Cloudy": "ابری",
+  "Overcast": "کاملاً ابری",
+  "Mist": "مه‌آلود",
+  "Fog": "مه",
+  "Smoky haze": "غبار دودآلود",
+  "Light rain": "باران سبک",
+  "Moderate rain": "باران متوسط",
+  "Heavy rain": "باران شدید",
+  "Light snow": "برف سبک",
+  "Moderate snow": "برف متوسط",
+  "Heavy snow": "برف شدید"
+}
+}

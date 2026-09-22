@@ -1,0 +1,51 @@
+{
+  "dashboard": {
+    "todayStatus": "Today's status",
+    "humidity": "Humidity",
+    "windSpeed": "Wind speed",
+    "precipitation": "Precipitation",
+    "feelsLike": "Feels like",
+    "currentHumidity": "Current humidity",
+    "currentWind": "Wind speed",
+    "currentPrecipitation": "Current precipitation",
+    "realFeel": "Feels like temperature",
+    "forecast": "Upcoming forecast"
+  },
+
+  "sidebar": {
+    "appName": "Weather",
+    "home": "Home",
+    "forecast": "Forecast",
+    "cities": "Cities",
+    "analytics": "Analytics",
+    "calendar": "Calendar",
+    "settings": "Settings"
+  },
+  "header": {
+  "searchPlaceholder": "Search city..."
+},
+"locations": {
+  "Tehran": "Tehran",
+  "Iran": "Iran"
+},
+"units": {
+  "kmh": "km/h",
+  "mm": "mm"
+},
+"weatherConditions": {
+  "Sunny": "Sunny",
+  "Clear": "Clear",
+  "Partly cloudy": "Partly cloudy",
+  "Cloudy": "Cloudy",
+  "Overcast": "Overcast",
+  "Mist": "Mist",
+  "Fog": "Fog",
+  "Smoky haze": "Smoky haze",
+  "Light rain": "Light rain",
+  "Moderate rain": "Moderate rain",
+  "Heavy rain": "Heavy rain",
+  "Light snow": "Light snow",
+  "Moderate snow": "Moderate snow",
+  "Heavy snow": "Heavy snow"
+}
+}

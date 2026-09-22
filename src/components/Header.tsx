@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 import {
   NotificationsNoneOutlined,
   PersonOutlineOutlined,
@@ -14,6 +16,8 @@ import {
 } from "@mui/material";
 
 export default function Header() {
+  const { t } = useTranslation();
+
   return (
     <Box
       component="header"
@@ -31,7 +35,7 @@ export default function Header() {
       {/* Search */}
       <TextField
         size="small"
-        placeholder="جستجوی شهر..."
+        placeholder={t("header.searchPlaceholder")}
         sx={{
           width: 300,
 

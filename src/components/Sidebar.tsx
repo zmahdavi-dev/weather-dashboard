@@ -18,45 +18,47 @@ import {
 } from "@mui/material";
 
 import { NavLink, useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import { DRAWER_WIDTH } from "../constants/layout";
 import { appColors } from "../theme";
 
-const menuItems = [
-  {
-    title: "خانه",
-    path: "/",
-    icon: <HomeOutlined />,
-  },
-  {
-    title: "پیش‌بینی",
-    path: "/forecast",
-    icon: <CloudOutlined />,
-  },
-  {
-    title: "موقعیت‌ها",
-    path: "/cities",
-    icon: <LocationOnOutlined />,
-  },
-  {
-    title: "تحلیل‌ها",
-    path: "/analytics",
-    icon: <AnalyticsOutlined />,
-  },
-  {
-    title: "تقویم",
-    path: "/calendar",
-    icon: <CalendarMonthOutlined />,
-  },
-  {
-    title: "تنظیمات",
-    path: "/settings",
-    icon: <SettingsOutlined />,
-  },
-];
-
 export default function Sidebar() {
   const location = useLocation();
+  const { t } = useTranslation();
+
+  const menuItems = [
+    {
+      title: t("sidebar.home"),
+      path: "/",
+      icon: <HomeOutlined />,
+    },
+    {
+      title: t("sidebar.forecast"),
+      path: "/forecast",
+      icon: <CloudOutlined />,
+    },
+    {
+      title: t("sidebar.cities"),
+      path: "/cities",
+      icon: <LocationOnOutlined />,
+    },
+    {
+      title: t("sidebar.analytics"),
+      path: "/analytics",
+      icon: <AnalyticsOutlined />,
+    },
+    {
+      title: t("sidebar.calendar"),
+      path: "/calendar",
+      icon: <CalendarMonthOutlined />,
+    },
+    {
+      title: t("sidebar.settings"),
+      path: "/settings",
+      icon: <SettingsOutlined />,
+    },
+  ];
 
   const checkIsActive = (path: string) => {
     if (path === "/") {
@@ -109,7 +111,7 @@ export default function Sidebar() {
             whiteSpace: "nowrap",
           }}
         >
-          هواشناسی
+          {t("sidebar.appName")}
         </Typography>
       </Box>
 
