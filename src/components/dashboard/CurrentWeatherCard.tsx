@@ -1,6 +1,9 @@
+import { useTranslation } from "react-i18next";
+
 import { Box, Card, CardContent, Typography } from "@mui/material";
 
 import tehranImage from "../../assets/tehran.jpg";
+import { formatNumber } from "../../utils/formatters";
 
 type CurrentWeatherCardProps = {
   city: string;
@@ -19,6 +22,10 @@ export default function CurrentWeatherCard({
   condition,
   localtime,
 }: CurrentWeatherCardProps) {
+  const { t, i18n } = useTranslation();
+
+  const language = i18n.resolvedLanguage ?? i18n.language;
+
   return (
     <Card
       sx={{
@@ -80,7 +87,7 @@ export default function CurrentWeatherCard({
               fontWeight: 600,
             }}
           >
-            {Math.round(temperature)}°
+            {formatNumber(Math.round(temperature), language)}°
           </Typography>
 
           <Typography
@@ -99,7 +106,8 @@ export default function CurrentWeatherCard({
               opacity: 0.85,
             }}
           >
-            دمای محسوس {Math.round(feelsLike)}°
+            {t("currentWeather.feelsLike")}{" "}
+            {formatNumber(Math.round(feelsLike), language)}°
           </Typography>
         </Box>
       </CardContent>

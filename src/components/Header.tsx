@@ -16,7 +16,13 @@ import {
 } from "@mui/material";
 
 export default function Header() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+
+  const isPersian = i18n.language.startsWith("fa");
+
+  const handleLanguageChange = () => {
+    i18n.changeLanguage(isPersian ? "en" : "fa");
+  };
 
   return (
     <Box
@@ -82,6 +88,22 @@ export default function Header() {
           alignItems: "center",
         }}
       >
+        <IconButton
+          size="small"
+          onClick={handleLanguageChange}
+          sx={{
+            width: 40,
+            height: 32,
+            borderRadius: 1,
+            fontSize: 11,
+            fontWeight: 600,
+            border: "1px solid",
+            borderColor: "divider",
+          }}
+        >
+          {isPersian ? "EN" : "FA"}
+        </IconButton>
+
         <IconButton size="small">
           <NotificationsNoneOutlined fontSize="small" />
         </IconButton>

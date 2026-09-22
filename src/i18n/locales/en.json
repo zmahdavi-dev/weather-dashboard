@@ -47,5 +47,41 @@
   "Light snow": "Light snow",
   "Moderate snow": "Moderate snow",
   "Heavy snow": "Heavy snow"
+},
+ "addCity": {
+    "title": "Add city",
+    "description": "Add another city to view its weather"
+  },
+
+  "rainChance": {
+    "title": "Chance of rain",
+    "morning9": "9 AM",
+    "noon12": "12 PM",
+    "afternoon3": "3 PM",
+    "afternoon6": "6 PM",
+    "night9": "9 PM",
+    "night12": "12 AM"
+  },
+
+  "currentWeather": {
+    "feelsLike": "Feels like"
+  },
+
+  "forecast": {
+    "title": "Upcoming forecast"
+  },
+
+"chart": {
+  "today": "Today",
+  "week": "Week",
+  "temperature": "Temperature",
+  "morning6": "6 AM",
+  "morning9": "9 AM",
+  "noon12": "12 PM",
+  "afternoon3": "3 PM",
+  "afternoon6": "6 PM",
+  "night9": "9 PM",
+  "night12": "12 AM",
+  "morning3": "3 AM"
 }
 }

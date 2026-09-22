@@ -1,4 +1,15 @@
-import { Box, Card, CardContent, Divider, Stack, Typography } from "@mui/material";
+import { useTranslation } from "react-i18next";
+
+import {
+  Box,
+  Card,
+  CardContent,
+  Divider,
+  Stack,
+  Typography,
+} from "@mui/material";
+
+import { formatNumber } from "../../utils/formatters";
 
 type ForecastItem = {
   date: string;
@@ -13,6 +24,10 @@ type ForecastCardProps = {
 };
 
 export default function ForecastCard({ items }: ForecastCardProps) {
+  const { t, i18n } = useTranslation();
+
+  const language = i18n.resolvedLanguage ?? i18n.language;
+
   return (
     <Card
       sx={{
@@ -38,7 +53,7 @@ export default function ForecastCard({ items }: ForecastCardProps) {
             mb: 1.5,
           }}
         >
-          پیش‌بینی روزهای آینده
+          {t("forecast.title")}
         </Typography>
 
         <Stack spacing={1.5}>
@@ -88,7 +103,8 @@ export default function ForecastCard({ items }: ForecastCardProps) {
                     fontWeight: 600,
                   }}
                 >
-                  {Math.round(item.maxTemp)}° / {Math.round(item.minTemp)}°
+                  {formatNumber(Math.round(item.maxTemp), language)}° /{" "}
+                  {formatNumber(Math.round(item.minTemp), language)}°
                 </Typography>
               </Stack>
 

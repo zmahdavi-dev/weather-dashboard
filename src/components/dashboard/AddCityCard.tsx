@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 import { AddRounded } from "@mui/icons-material";
 
 import {
@@ -8,6 +10,8 @@ import {
 } from "@mui/material";
 
 export default function AddCityCard() {
+  const { t } = useTranslation();
+
   return (
     <Card
       sx={{
@@ -50,7 +54,7 @@ export default function AddCityCard() {
             fontWeight: 500,
           }}
         >
-          افزودن شهر
+          {t("addCity.title")}
         </Typography>
 
         <Typography
@@ -60,7 +64,7 @@ export default function AddCityCard() {
             lineHeight: 1.8,
           }}
         >
-          یک شهر دیگر برای مشاهده آب‌وهوا اضافه کنید
+          {t("addCity.description")}
         </Typography>
       </Stack>
     </Card>

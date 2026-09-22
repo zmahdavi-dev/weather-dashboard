@@ -46,5 +46,41 @@
   "Light snow": "برف سبک",
   "Moderate snow": "برف متوسط",
   "Heavy snow": "برف شدید"
+},
+ "addCity": {
+    "title": "افزودن شهر",
+    "description": "یک شهر دیگر برای مشاهده آب‌وهوا اضافه کنید"
+  },
+
+  "rainChance": {
+    "title": "احتمال بارش",
+    "morning9": "۹ صبح",
+    "noon12": "۱۲ ظهر",
+    "afternoon3": "۳ عصر",
+    "afternoon6": "۶ عصر",
+    "night9": "۹ شب",
+    "night12": "۱۲ شب"
+  },
+
+  "currentWeather": {
+    "feelsLike": "دمای محسوس"
+  },
+
+  "forecast": {
+    "title": "پیش‌بینی روزهای آینده"
+  },
+
+"chart": {
+  "today": "امروز",
+  "week": "هفته",
+  "temperature": "دما",
+  "morning6": "۶ صبح",
+  "morning9": "۹ صبح",
+  "noon12": "۱۲ ظهر",
+  "afternoon3": "۳ عصر",
+  "afternoon6": "۶ عصر",
+  "night9": "۹ شب",
+  "night12": "۱۲ شب",
+  "morning3": "۳ صبح"
 }
 }

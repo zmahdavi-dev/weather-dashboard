@@ -1,15 +1,19 @@
+import { useTranslation } from "react-i18next";
+
 import { Box, Card, CardContent, Stack, Typography } from "@mui/material";
 
-const rainItems = [
-  { time: "۹ صبح", value: 35 },
-  { time: "۱۲ ظهر", value: 70 },
-  { time: "۳ عصر", value: 45 },
-  { time: "۶ عصر", value: 90 },
-  { time: "۹ شب", value: 50 },
-  { time: "۱۲ شب", value: 20 },
-];
-
 export default function RainChanceCard() {
+  const { t } = useTranslation();
+
+  const rainItems = [
+    { time: t("rainChance.morning9"), value: 35 },
+    { time: t("rainChance.noon12"), value: 70 },
+    { time: t("rainChance.afternoon3"), value: 45 },
+    { time: t("rainChance.afternoon6"), value: 90 },
+    { time: t("rainChance.night9"), value: 50 },
+    { time: t("rainChance.night12"), value: 20 },
+  ];
+
   return (
     <Card
       sx={{
@@ -33,7 +37,7 @@ export default function RainChanceCard() {
             mb: 2,
           }}
         >
-          احتمال بارش
+          {t("rainChance.title")}
         </Typography>
 
         <Stack spacing={1.4}>
